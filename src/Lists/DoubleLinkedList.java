@@ -25,27 +25,60 @@ public class DoubleLinkedList<E> implements List<E> {
 	public void add(int index, E e) {
 		Node<E> newNode = new Node();
 		newNode.element = e;
-
+		Node<E> currentNode = this.firstNode;
+		
+		for(int i=0; i < index; i++){
+			currentNode = currentNode.next;
+		}
+		
+		currentNode.previous.next = newNode;
+		newNode.next = currentNode.next;
+		
+		this.size += 1;
+		
 	}
 
 	@Override
 	public E remove(int index) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		Node<E> currentNode = this.firstNode;
+		
+		for(int i = 0; i < index; i++){
+			currentNode = currentNode.next;
+		}
+		
+		currentNode.previous.next = currentNode.next;
+		currentNode.next.previous = currentNode.previous;
+		
+		this.size -= 1;
+		
+		return currentNode.element;
 	}
 
 	@Override
 	public E pop() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		return this.remove(this.size-1);
 	}
 
 	@Override
 	public E get(int index) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		Node<E> currentNode = this.firstNode;
+		
+		for(int i = 0; i < index; i++){
+			currentNode = currentNode.next;
+		}
+		
+		return currentNode.element;
 	}
 
 	@Override
 	public void set(int index, E e) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		Node<E> currentNode = this.firstNode;
+		
+		for(int i = 0; i < index; i++){
+			currentNode = currentNode.next;
+		}
+		
+		currentNode.element = e;
 	}
 
 	@Override

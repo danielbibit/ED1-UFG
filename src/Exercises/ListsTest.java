@@ -11,31 +11,23 @@ public class ListsTest {
 		List<Integer> doubleList = new DoubleLinkedList();
 		List<Integer> intArray = new ArrayList(3);
 		
-		Integer a = 23;
-		Integer b = 12;
-		Integer c = 1997;
+		for(int i = 0; i < 100; i++){
+			intList.add(i);
+			doubleList.add(i);
+			intArray.add(i);
+		}
 		
-		intList.add(a);
-		intList.add(b);
-		intList.add(c);
-
-		doubleList.add(a);
-		doubleList.add(b);
-		doubleList.add(c);
+		System.out.println(intList.toString());
+		System.out.println(doubleList.toString());
+		System.out.println(intArray.toString());
 		
+		intList.remove(5);
+		doubleList.remove(5);
+		intArray.remove(5);
 		
-		intArray.add(a);
-		intArray.add(b);
-		intArray.add(c);
-		
-	//	System.out.println(doubleList.toString());
-		
-	//	System.out.println(intList.toString());
-		
-	//	intList.add(0, 9);
-	//	System.out.println(intList.toString());
-	//	intList.remove(3);
-	//	System.out.println(intList.toString());
+		System.out.println(intList.toString());
+		System.out.println(doubleList.toString());
+		System.out.println(intArray.toString());
 		
 	}
 	
