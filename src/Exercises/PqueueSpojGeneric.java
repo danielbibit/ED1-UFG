@@ -3,7 +3,7 @@ package Exercises;
 //import java.util.ArrayList;
 import java.util.Scanner;
 
-class SpojGeneric {
+class PqueueSpojGeneric {
 
     public static void main(String[] args) {
         ArrayList<String> test = new ArrayList();

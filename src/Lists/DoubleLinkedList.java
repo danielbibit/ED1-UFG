@@ -16,6 +16,7 @@ public class DoubleLinkedList<E> implements List<E> {
 			lastNode.next = newNode;
 			newNode.previous = lastNode;
 		}
+		
 		lastNode = newNode;
 		
 		this.size += 1;
