@@ -1,13 +1,11 @@
 package Trees;
 
-public class Node<E> {
+public class Node<E extends Comparable<E>> {
 
 	Node parent;
 	
 	Node leftChildren;
 	Node rightChildren;
-
-	int key;
 
 	E element;
 }
