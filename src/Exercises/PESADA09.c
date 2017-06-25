@@ -89,7 +89,7 @@ int main(){
 	fgets(buffer, 100, stdin);
 
 	initialize_tree(tree);
-
+	
 	for(i = 0; i < number_of_tests; i++){
 		memset(buffer, 0, strlen(buffer));
 		fgets(buffer, 100, stdin);
