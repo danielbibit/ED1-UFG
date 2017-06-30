@@ -15,14 +15,11 @@ public class SimpleBST<E extends Comparable<E>> {
 
         if (node.element.compareTo(e) == 0) {
             return e;
-            //}else if(node.element.compareTo(e) > 0){
         } else if (e.compareTo(node.element) < 0) {
             return (E) this.search(node.leftChildren, e);
-        } else if (node.element.compareTo(e) < 0) {
+        } else{
             return (E) this.search(node.rightChildren, e);
         }
-
-        return null;
     }
 
     public boolean contains(E e) {
@@ -34,22 +31,24 @@ public class SimpleBST<E extends Comparable<E>> {
     }
 
     public void add(E e) {
-        this.root = add(root, e);
+        this.root = add(root, null, e);
     }
 
-    private Node<E> add(Node<E> node, E e) {
+    private Node<E> add(Node<E> node, Node<E> lastNode, E e) {
         if (node == null) {
             node = new Node();
+            node.parent = lastNode;
             node.element = e;
             return node;
         }
 
         if (node.element.compareTo(e) > 0) {
-            node.leftChildren = this.add(node.leftChildren, e);
+            node.leftChildren = this.add(node.leftChildren, node, e);
         } else if (node.element.compareTo(e) < 0) {
-            node.rightChildren = this.add(node.rightChildren, e);
+            node.rightChildren = this.add(node.rightChildren, node, e);
         } else {
             node.element = e;
+            node.parent = lastNode;
         }
 
         return node;

@@ -20,6 +20,6 @@ public class TreeTest {
         System.out.println(tree.floor());
         System.out.println(tree.ceil());
         tree.search(6);
-        System.out.println(tree.contains(7));
+        System.out.println(tree.contains(6));
     }
 }
