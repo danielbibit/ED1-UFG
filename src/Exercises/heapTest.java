@@ -1,10 +1,10 @@
 package Exercises;
 
-import Heap.MaxHeap;
+import Heap.MinHeap;
 
 public class heapTest {
 	public static void main(String[] args){
-		MaxHeap heap = new MaxHeap();
+		MinHeap heap = new MinHeap();
 		
 		heap.insert(40);
 		System.out.println(heap.toString());
@@ -21,7 +21,7 @@ public class heapTest {
 		heap.insert(70);
 		heap.insert(50);
 		System.out.println(heap.toString());
-//        System.out.println(heap.remove());
+        System.out.println(heap.remove());
         System.out.println(heap.toString());
         System.out.println();
         

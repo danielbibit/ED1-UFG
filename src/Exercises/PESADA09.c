@@ -41,6 +41,7 @@ int height(int* tree, int node){
 }
 
 int balance(int* tree, int node){
+	//printf("Balance %i = %i\n",node, height(tree, node*2+1) - height(tree, node*2+2));
 	return height(tree, node*2+1) - height(tree, node*2+2);
 }
 
@@ -83,6 +84,12 @@ int main(void){
 
 		initialize_tree(tree);
 		int size_of_tree = split_string(p, tree);
+		printf("Altura node 0: %i", height(tree, 0));
+		printf("Altura node 1: %i", height(tree, 1));
+		printf("Altura node 2: %i", height(tree, 2));
+		printf("Altura node 3: %i", height(tree, 3));
+		printf("Altura node 4: %i", height(tree, 4));
+		printf("Altura node 5: %i", height(tree, 5));
 
 		verify_AVL(tree, size_of_tree);
 	}
