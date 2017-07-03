@@ -2,6 +2,8 @@ package Graphs;
 
 import java.util.ArrayList;
 
-public interface Vertex {
-    //ArrayList<Edge> neighbourHood;
+public class Vertex<E> {
+    ArrayList<Edge> neighbourHood;
+    E element;
+    int degree;
 }

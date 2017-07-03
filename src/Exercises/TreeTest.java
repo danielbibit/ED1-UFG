@@ -12,14 +12,19 @@ public class TreeTest {
         tree.add(1);
         //tree.add(5);
         
-        System.out.println(tree.floor());
-        System.out.println(tree.ceil());
+        System.out.println(tree.minimum());
+        System.out.println(tree.maximum());
         
         tree.add(10);
+//		tree.add(11); //Uncoment to desbalance tree
+//		tree.add(12);
         
-        System.out.println(tree.floor());
-        System.out.println(tree.ceil());
-        tree.search(6);
-        System.out.println(tree.contains(6));
+        System.out.println(tree.minimum());
+        System.out.println(tree.maximum());
+        
+        System.out.println(tree.remove(4));
+        
+//        System.out.println(tree.minimum());
+//        System.out.println(tree.maximum());
     }
 }
