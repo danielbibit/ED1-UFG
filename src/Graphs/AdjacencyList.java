@@ -2,7 +2,7 @@ package Graphs;
 
 import java.util.ArrayList;
 
-public class AdjacencyList {
+public class AdjacencyList<E> {
     private ArrayList<Vertex> vertexList = new ArrayList();
     private ArrayList<ArrayList<Vertex>> adjacency = new ArrayList();
     

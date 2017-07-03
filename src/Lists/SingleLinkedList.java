@@ -127,5 +127,10 @@ public class SingleLinkedList <E> implements List<E>  {
 		
 		return string.toString();
 	}
+
+    @Override
+    public int indexOf(E e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

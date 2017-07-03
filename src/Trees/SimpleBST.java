@@ -115,7 +115,8 @@ public class SimpleBST<E extends Comparable<E>> {
     }
     
     public E sucessor(E e) {
-        return (E) this.subTreeMinimum(node.rightChildren).element;
+        //return (E) this.subTreeMinimum(node.rightChildren).element;
+        return null;
     }
     
     private Node<E> sucessor(Node<E> node){

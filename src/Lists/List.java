@@ -15,6 +15,7 @@ public interface List <E> {
 	
 	public int size();	
 	
+    public int indexOf(E e);
 	@Override
 	public String toString();
 }
