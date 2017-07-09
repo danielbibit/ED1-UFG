@@ -1,8 +1,9 @@
 package Maps;
 
-public interface Map<T extends Comparable, E> {
-    public void add(T t, E e);
-    public E get(T t);
-    public T contains(E e);
-    public E remove(T t);
+public interface Map<K extends Comparable, E> {
+    public void add(K k, E e);
+    public E get(K k);
+    public boolean containsKey(K k);
+    public E remove(K k);
+    public int size();
 }

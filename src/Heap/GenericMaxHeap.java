@@ -2,8 +2,16 @@ package Heap;
 
 public class GenericMaxHeap<E extends Comparable<E>> implements Heap<E> {
     
-    private Object[] array = new Object[100];
+    private Object[] array;
     private int size = 0;
+    
+    public GenericMaxHeap(){
+        this(100);
+    }
+    
+    public GenericMaxHeap(int size){
+        this.array = new Object[size];
+    }
     
     private void ensureSpace() {
         if (this.array.length < this.size * 2 + 1) {
@@ -24,7 +32,7 @@ public class GenericMaxHeap<E extends Comparable<E>> implements Heap<E> {
             bigger = leftChildren;
         }
         
-        if(((E)this.array[rightChildren]).compareTo((E)this.array[bigger]) > 0 && leftChildren < this.size - 1){
+        if(((E)this.array[rightChildren]).compareTo((E)this.array[bigger]) > 0 && rightChildren < this.size - 1){
             bigger = rightChildren;
         }
 

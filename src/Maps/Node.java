@@ -1,13 +1,11 @@
 package Maps;
 
-public class Node<K extends Comparable, E> {
+public class Node<K extends Comparable, E> implements Comparable{
     K key;
-    E element;
+    E element;    
 
     @Override
-    public boolean equals(Object o) {
-        return super.equals(o); //To change body of generated methods, choose Tools | Templates.
+    public int compareTo(Object t) {
+        return this.key.compareTo(t);
     }
-    
-    
 }

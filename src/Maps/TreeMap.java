@@ -1,27 +1,29 @@
 package Maps;
 
-import Heap.*;
-
-public class HeapMap<T extends Comparable, E> implements Map<T, E> {
-    //private MaxHeap<Node> heap = new MaxHeap();
+public class TreeMap<K extends Comparable<K>, E> implements Map<K, E> {
 
     @Override
-    public E get(T t) {
+    public void add(K k, E e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public T contains(E e) {
+    public E get(K k) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public E remove(T t) {
+    public boolean containsKey(K k) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     @Override
-    public void add(T t, E e) {
+    public E remove(K k) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int size() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

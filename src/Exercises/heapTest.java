@@ -1,11 +1,10 @@
 package Exercises;
 
-import Heap.GenericMaxHeap;
-import Heap.MinHeap;
+import Heap.*;
 
 public class heapTest {
 	public static void main(String[] args){
-		GenericMaxHeap<Integer> heap = new GenericMaxHeap();
+		GenericMaxHeap<Integer> heap = new GenericMaxHeap(2);
 		
 		heap.insert(40);
 		System.out.println(heap.toString());
@@ -22,10 +21,9 @@ public class heapTest {
 		heap.insert(70);
 		heap.insert(50);
 		System.out.println(heap.toString());
-        //heap.remove();
+        heap.remove();
         System.out.println(heap.remove());
         System.out.println(heap.toString());
         System.out.println();
-        //heap.printTree();
 	}
 }

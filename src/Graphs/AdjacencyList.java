@@ -3,39 +3,39 @@ package Graphs;
 import java.util.ArrayList;
 
 public class AdjacencyList<E> {
-    private ArrayList<Vertex> vertexList = new ArrayList();
-    private ArrayList<ArrayList<Vertex>> adjacency = new ArrayList();
+    private final ArrayList<E> vertexList = new ArrayList();
+    private final ArrayList<ArrayList<E>> adjacency = new ArrayList();
     
-    public void addVertex(Vertex v){
-        vertexList.add(v);
+    public void addVertex(E e){
+        vertexList.add(e);
     }
     
-    public void removeVertex(Vertex v){
-        vertexList.remove(v);
+    public void removeVertex(E e){
+        vertexList.remove(e);
         
-        adjacency.remove(vertexList.indexOf(v));
+        adjacency.remove(vertexList.indexOf(e));
         
-        for(ArrayList<Vertex> l : adjacency){
-            l.remove(v);
+        for(ArrayList<E> l : adjacency){
+            l.remove(e);
         }
     }
     
-    public boolean isAdjacent(Vertex v1, Vertex v2){
-        if(!vertexList.contains(v1) && !vertexList.contains(v2)){
+    public boolean isAdjacent(E e1, E e2){
+        if(!vertexList.contains(e1) && !vertexList.contains(e2)){
             return false;
         }
         
-        return adjacency.get(vertexList.indexOf(v1)).contains(v2);
+        return adjacency.get(vertexList.indexOf(e1)).contains(e2);
     }
     
-    public ArrayList<Vertex> neighbourHood(Vertex v){
-        if(!vertexList.contains(v)){
+    public ArrayList<E> neighbourHood(E e){
+        if(!vertexList.contains(e)){
             return null;
         }
-        return adjacency.get(vertexList.indexOf(v));
+        return adjacency.get(vertexList.indexOf(e));
     }
     
-    public void insertEdge(Vertex v1, Vertex v2){
-        adjacency.get(vertexList.indexOf(v1)).add(v2);
+    public void insertEdge(E e1, E e2){
+        adjacency.get(vertexList.indexOf(e1)).add(e2);
     }
 }

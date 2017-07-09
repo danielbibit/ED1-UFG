@@ -19,7 +19,7 @@ public class ArrayStack<E> implements Stack<E> {
 			
 			System.arraycopy(this.array, 0, newArray, 0, this.size);
 			
-			array = newArray;
+			this.array = newArray;
 		}
 	}
 	
@@ -27,9 +27,9 @@ public class ArrayStack<E> implements Stack<E> {
 	public void push(E e) {
 		this.ensureSpace();
 		
-		array[size] = e;
+		this.array[this.size] = e;
 		
-		size += 1;	
+		this.size += 1;	
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class ArrayStack<E> implements Stack<E> {
 		}
 		
 		this.size -= 1;
-		return (E)array[size];
+		return (E)this.array[this.size];
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class ArrayStack<E> implements Stack<E> {
 			
 		}
 		
-		return (E)array[size-1];
+		return (E)this.array[this.size-1];
 	}
 
 	@Override
@@ -65,8 +65,8 @@ public class ArrayStack<E> implements Stack<E> {
 	public String toString(){
 		StringBuilder string = new StringBuilder("[");
 		
-		for(int i = 0; i<this.size; i++){
-			string.append(array[i].toString());
+		for(int i = 0; i < this.size; i++){
+			string.append(this.array[i].toString());
 			string.append(",");
 		}
 		

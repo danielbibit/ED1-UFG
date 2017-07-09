@@ -71,119 +71,117 @@ class PqueueSpojGeneric {
 
     }
     
-    static class MaxHeap {
+    
+public interface Heap <E extends Comparable> {
+    public void insert(E e);
+    public E remove();
+    public E peek();
+    public int size();
+    @Override
+    public String toString();
+}
 
-        private int[] array = new int[100];
-        private int size = 1;
+    static class GenericMaxHeap<E extends Comparable<E>> implements Heap<E> {
+    
+    private Object[] array = new Object[100];
+    private int size = 0;
+    
+    private void ensureSpace() {
+        if (this.array.length < this.size * 2 + 1) {
+            Object[] newArray = new Object[this.size * 3];
 
-        private void ensureSpace() {
-            if (this.array.length < this.size * 2 + 1) {
-                int[] newArray = new int[this.size * 3];
+            System.arraycopy(this.array, 0, newArray, 0, this.array.length);
 
-                System.arraycopy(this.array, 0, newArray, 0, this.array.length);
-
-                this.array = newArray;
-            }
-        }
-
-        private void maxHeapify(int i) {
-            int bigger = i;
-            int leftChildren = 2 * i;
-            int rightChildren = 2 * i + 1;
-
-            if (this.array[leftChildren] > this.array[bigger] && leftChildren < this.size) {
-                bigger = leftChildren;
-            }
-
-            if (this.array[rightChildren] > this.array[bigger] && rightChildren < this.size) {
-                bigger = rightChildren;
-            }
-
-            if (i != this.size - 1 && bigger != i) {
-                int buffer = this.array[bigger];
-                this.array[bigger] = this.array[i];
-                this.array[i] = buffer;
-                this.maxHeapify(bigger);
-            }
-        }
-
-        private void increaseKeyValue(int i) {
-            int parent = i / 2;
-
-            if (i != 1 && (this.array[parent] < this.array[i])) {
-                int buffer = this.array[parent];
-
-                this.array[parent] = this.array[i];
-                this.array[i] = buffer;
-
-                this.increaseKeyValue(parent);
-            }
-        }
-
-        public void insert(int n) {
-            this.ensureSpace();
-
-            this.array[size] = n;
-            this.size += 1;
-
-            this.increaseKeyValue(size - 1);
-        }
-
-        public int remove() {
-            int buffer = -1;
-            
-            if (this.size > 1) {
-                buffer = this.array[1];
-                this.array[1] = this.array[size - 1];
-                //this.array[size - 1] = 0;
-                this.size -= 1;
-
-                this.maxHeapify(1);
-            }
-
-            return buffer;
-        }
-
-        public int peek() {
-            return this.array[1];
-        }
-
-        public int size() {
-            return this.size - 1;
-        }
-
-        public void printTree() {
-            int number = 1;
-            int treeLayers = this.size / 2 - 1;
-
-            for (int i = 0; i < treeLayers; i++) {
-                for (int j = 0; j < Math.pow(2, i); j++) {
-                    for (int k = 0; k < treeLayers / (i + 1); k++) {
-                        System.out.print(" ");
-                    }
-                    System.out.print(this.array[number]);
-                    number += 1;
-                }
-                System.out.println();
-            }
-        }
-
-        @Override
-        public String toString() {
-            StringBuilder builder = new StringBuilder();
-
-            for (int i = 1; i < this.size; i++) {
-                builder.append(String.valueOf(this.array[i]));
-                builder.append(' ');
-            }
-
-            return builder.toString();
+            this.array = newArray;
         }
     }
+    
+    private void maxHeapify(int i) {
+        int bigger = i;
+        int leftChildren = 2 * i + 1;
+        int rightChildren = 2 * i + 2;
+        if(leftChildren < this.size - 1)
+        if(((E)this.array[leftChildren]).compareTo((E)this.array[bigger]) > 0){
+            bigger = leftChildren;
+        }
+        if(rightChildren < this.size - 1)
+        if(((E)this.array[rightChildren]).compareTo((E)this.array[bigger]) > 0){
+            bigger = rightChildren;
+        }
+
+        if (i != this.size - 1 && bigger != i) {
+            Object buffer = this.array[bigger];
+            this.array[bigger] = this.array[i];
+            this.array[i] = buffer;
+            this.maxHeapify(bigger);
+        }
+    }
+    
+    private void increaseKeyValue(int i) {
+        int parent = i / 2;
+        
+        if(i != 0 && ((E)this.array[parent]).compareTo((E)this.array[i]) < 0){
+            Object buffer = this.array[parent];
+
+            this.array[parent] = this.array[i];
+            this.array[i] = buffer;
+
+            this.increaseKeyValue(parent);
+        }
+    }
+    
+    @Override
+    public void insert(E e) {
+        this.ensureSpace();
+
+        this.array[size] = e;
+        this.size += 1;
+
+        this.increaseKeyValue(size - 1);
+    }
+
+    @Override
+    public E remove() {
+        if (this.size > 0) {
+            Object buffer = this.array[0];
+            this.array[0] = this.array[size - 1];
+            this.size -= 1;
+
+            this.maxHeapify(0);
+
+            return (E)buffer;
+        }
+
+        return null;
+    }
+
+    @Override
+    public E peek() {
+        return (E) this.array[0];
+    }
+
+    @Override
+    public int size() {
+        return this.size - 1;
+    }
+
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+
+        for (int i = 0; i < this.size; i++) {
+            builder.append((E)this.array[i].toString());
+            builder.append(' ');
+        }
+
+        return builder.toString();
+    }
+}
+
 
     static class PriorityQueue {
 
-        private MaxHeap heap = new MaxHeap();
+        private GenericMaxHeap<Integer> heap = new GenericMaxHeap();
 
         public boolean enqueue(int i) {
             heap.insert(i);

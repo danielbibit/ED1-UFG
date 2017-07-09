@@ -80,22 +80,6 @@ public class MinHeap {
         return this.size - 1;
     }
 
-    public void printTree() {
-        int number = 1;
-        int treeLayers = this.size / 2 - 1;
-
-        for (int i = 0; i < treeLayers; i++) {
-            for (int j = 0; j < Math.pow(2, i); j++) {
-                for (int k = 0; k < treeLayers / (i + 1); k++) {
-                    System.out.print(" ");
-                }
-                System.out.print(this.array[number]);
-                number += 1;
-            }
-            System.out.println();
-        }
-    }
-
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();

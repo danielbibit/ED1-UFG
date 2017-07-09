@@ -8,27 +8,26 @@ public class ListStack<E> implements Stack<E> {
 	
 	@Override
 	public void push(E e) {
-		list.add(e);
+		this.list.add(e);
 	}
 
 	@Override
 	public E pop() {
-		return list.pop();
+		return this.list.pop();
 	}
 
 	@Override
 	public E peek() {
-		return list.get(list.size()-1);
+		return this.list.get(this.list.size()-1);
 	}
 
 	@Override
 	public boolean isEmpity() {
-		return list.size()==0;
+		return this.list.size()==0;
 	}
 	
 	@Override
 	public int size() {
-		return list.size();
-	}
-	
+		return this.list.size();
+	}	
 }
