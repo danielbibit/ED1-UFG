@@ -2,6 +2,24 @@ import numpy as np
 
 def dijk(graph, origin, destin):
     visited = []
+    distance = []
+
+    distance[origin] = 0
+
+    while True:
+        n = -1
+
+        for i in range(destin):
+            if not visited[i] and (n == -1 or distance[i] < distance[n]):
+                n = i
+        if n == -1:
+            break
+
+        visited[n] = 1
+
+        for i in range(destin):
+            if(dis[i] > dis[n] + graph[n, i]):
+                dis[i] = dis[n] + graph[n, i]
 
     return 0
 
