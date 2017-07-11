@@ -27,21 +27,18 @@ int split_string(char* str, int* tree){
 void initialize_tree(int* tree){
 	int i;
 
-	for(i = 0; i < 250; i++){
+	for(i = 0; i < 250; i++)
 		tree[i] = -1;
-	}
 }
 
 int height(int* tree, int node){
-	if(tree[node] == -1){
+	if(tree[node] == -1)
 		return -1;
-	}else{
+	else
 		return 1 + max(height(tree, node*2+1), height(tree, node*2+2));
-	}
 }
 
 int balance(int* tree, int node){
-	//printf("Balance %i = %i\n",node, height(tree, node*2+1) - height(tree, node*2+2));
 	return height(tree, node*2+1) - height(tree, node*2+2);
 }
 
@@ -84,12 +81,6 @@ int main(void){
 
 		initialize_tree(tree);
 		int size_of_tree = split_string(p, tree);
-		printf("Altura node 0: %i", height(tree, 0));
-		printf("Altura node 1: %i", height(tree, 1));
-		printf("Altura node 2: %i", height(tree, 2));
-		printf("Altura node 3: %i", height(tree, 3));
-		printf("Altura node 4: %i", height(tree, 4));
-		printf("Altura node 5: %i", height(tree, 5));
 
 		verify_AVL(tree, size_of_tree);
 	}
