@@ -22,9 +22,9 @@ public class PqueueSpoj {
         }
 
         while (test.size() != 0) {
-			PriorityQueue heapQueue = new PriorityQueue();
-			ListQueue<Integer> queue = new ListQueue();
-		
+            PriorityQueue heapQueue = new PriorityQueue();
+            ListQueue<Integer> queue = new ListQueue();
+
             String l1 = test.remove(0);
             String l2 = test.remove(0);
             int time = 0;
@@ -49,18 +49,17 @@ public class PqueueSpoj {
                     queue.dequeue();
                     time++;
 
-                    if (myElement == 0) {
+                    if (myElement == 0)
                         break;
-                    }
+                    
 
                     myElement--;
                 } else {
                     queue.enqueue(queue.dequeue());
-                    if (myElement == 0) {
+                    if (myElement == 0)
                         myElement = queue.size() - 1;
-                    } else {
+                    else
                         myElement--;
-                    }
                 }
             }
             System.out.println(time);
